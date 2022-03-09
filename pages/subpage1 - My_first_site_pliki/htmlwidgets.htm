@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title> Start</title>
+		<!-- META -->
+		<meta charset="UTF-8">
+		
+
+		<script src="https://www.youtube.com/iframe_api"></script>
+		<!-- CSS -->
+		<style class='common-css'>
+
+body {
+	padding: 0px;
+	margin: 0px;
+	min-height:100%;
+}
+
+.clickable{
+	cursor:pointer;
+}
+
+.shown {
+   opacity:1;
+}
+
+.bottom-layer{
+	z-index:0;
+}
+
+.layer1{
+	z-index:1;
+}
+
+.layer2{
+	z-index:12;
+}
+
+.layer3{
+	z-index:123;
+}
+
+.layer4{
+	z-index:1234;
+}
+
+.layer5{
+	z-index:12345;
+}
+
+.top-layer{
+	z-index:123456789;
+}
+
+.space-layer{
+	z-index:1234567899;
+}
+
+.fully-animated *{
+		-webkit-transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -moz-transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    -o-transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+
+.animated-color{
+	-webkit-transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+ 	-moz-transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  	-o-transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  	transition: color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  	-webkit-transition: background-color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+ 	-moz-transition: background-color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  	-o-transition: background-color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  	transition: background-color 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+
+
+
+
+.zero-opacity{
+	opacity:0;
+}
+
+
+
+.slow-animated-opacity{
+	-webkit-transition: opacity 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+ 	-moz-transition: opacity 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  	-o-transition: opacity 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  	transition: opacity 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.bg-div{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	background-image:url(/images/backgrounds/1.jpg);
+	background-repeat:no-repeat;
+	background-size: cover;
+	background-position:center;
+	opacity:0;
+}
+
+.bg-div.shown{
+	opacity:0.4;
+}
+
+
+
+
+/* MAGIC CIRCLE */
+
+
+
+.item-settings-menu{
+	width:25px;
+	height:25px;
+	cursor:pointer;
+	margin:2px;
+	display:inline-block;
+}
+
+
+
+img.item-settings-menu:hover{
+	/*background-color:grey;*/
+}
+
+.magic-circle-controls{
+	position:absolute;
+	opacity:0;
+	background-color:black;
+}
+
+.magic-circle-controls.shown {
+   opacity:1;
+}
+
+
+
+/* BREAD CRUMBS */
+#bread-crumbs{
+	font-family:HelveNueThinNormal;
+	color:white;
+	font-size:30px;
+	left:40px;
+	top:40px;
+	display:inline-block;
+	position:fixed;
+}
+#bread-crumbs img:not(.label-logo){
+	vertical-align: middle;
+	width:60px;
+	height:60px;
+	margin-top:-16px;
+}
+
+#bread-crumbs img.label-logo{
+	vertical-align:top;
+	margin-right:5px;
+}
+
+#bread-crumbs span{
+	color:#666;
+	font-size:30px;
+	display:inline-block;
+}
+
+
+#bread-crumbs span.im-text , .module-back span.im-text{
+	/*color:transparent;
+  	background-repeat: no-repeat;
+  	background-image: url('/images/ui_icons/xprslogo.png');
+  	background-size: contain;
+  	height: 25px;
+  	background-position: center;*/
+}
+
+
+#bread-crumbs .bread-crumbs-path, #bread-crumbs .back-btn{
+	display: inline-block;
+} 
+
+
+#bread-crumbs span.beta-icon{
+	font-size:10px;
+	color:white;
+}
+
+
+#bread-crumbs a{
+	text-decoration: none;
+	color:white;
+	font-size:12px;
+}
+
+
+#blocking-div{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color:black;
+	background-image:url(/images/x_loader.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 50px 50px;
+	
+}
+
+.terms-link , .call-me{
+	text-decoration: none;
+	color: #999;
+	font-family: Arial;
+	padding-left: 10px;
+	font-size: 14px;
+}
+
+.tooltip-circle{
+	background-image:url(/images/ui_icons/tooltip_circle.png);
+	background-repeat:no-repeat;
+	width:100px;
+	height:100px;
+	position:absolute;
+	z-index: 9999999999;
+	cursor:pointer;
+	/*pointer-events:none;*/
+}
+
+
+
+.tooltip-wrapper.top-left{
+		background-image:url(/images/ui_icons/tooltip_top_left.png);
+}
+
+.tooltip-wrapper.bottom-left{
+	background-image:url(/images/ui_icons/tooltip_bottom_left.png);
+}
+
+.tooltip-wrapper.top-right{
+	background-image:url(/images/ui_icons/tooltip_top_right.png);
+}
+
+.tooltip-wrapper.bottom-right{
+	background-image:url(/images/ui_icons/tooltip_bottom_right.png);
+}
+	
+	
+.tooltip-wrapper{
+	background-repeat:no-repeat;
+	width:300px;
+	height:250px;
+	position:absolute;
+	z-index: 99999999;
+}
+
+.tooltip-holder{
+	font-family:Arial;
+	margin:30px;
+	text-align: left;
+}
+
+.tooltip-category{
+	font-size:16px;
+	color:red;
+	font-weight:bold;
+	padding-top: 10px;
+}
+
+.tooltip-title{
+	font-size:22px;
+	color:#333;
+}
+
+.tooltip-content{
+	font-size:12px;
+	color:#999;
+	padding-top: 5px;
+}
+
+.tooltip-btn{
+	border:solid 1px #999;
+	color:#999;
+	font-size:12px;
+	display: inline-block;
+	/*padding: 3px;*/
+	margin-top: 20px;
+	cursor:pointer;
+	position: absolute;
+	padding: 5px 10px;
+}
+
+.tooltip-btn.tooltip-next{
+	bottom: 44px;
+	right: 34px;
+	color: white;
+	background-color: #33CC66;
+	border: solid 1px #33CC66;
+	
+}
+.tooltip-btn.tooltip-hide{
+	bottom: 44px;
+	left: 31px;
+}
+
+.regular-mode .pro-feature{
+	display:none!important;
+}
+
+iframe.stripe_checkout_app {
+    z-index:12345678911!important;
+}
+.sr-modal-backdrop{
+	z-index:1234567891!important;
+}
+
+.sr-confirm-amount{
+	border:none!important;
+}
+
+.fa.fa-shopping-cart{
+	border:none!important;
+}
+
+.sr-basket-widget-inner{
+	border:none!important;
+}
+
+.t-t{
+	/*color:red!important;*/
+}
+
+
+#translation-box{
+ 	float: left;
+ 	text-align: left;
+    color: white;
+    line-height: normal;
+    margin-right: 11px;
+    margin-top: 10px;
+    font-size: 12px;
+    z-index: 1234;
+    background-color: #666;
+    position: relative;
+    font-family: Arial;
+    width: 44px;
+    display: inline-block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+
+#translation-box img.caret{
+	width:12px;
+	height:12px;
+	margin-top: 2px;
+    margin-left: 4px;
+}
+
+#translation-box ul#lang-dropdown{
+    line-height: normal;
+    font-size: 12px;
+    padding:4px;
+    display:none;
+    list-style-type: none;
+    margin: 0px;
+    margin-right:11px;
+    padding: 0px;
+    position: absolute;
+    background-color: #666;
+    left: 0px;
+    text-align: left;
+    max-height:170px;
+    overflow-y:scroll;
+}
+
+
+#translation-box ul#lang-dropdown::-webkit-scrollbar-track{
+	/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+	background-color: #000000;
+}
+
+#translation-box ul#lang-dropdown::-webkit-scrollbar{
+	width: 6px;
+	background-color: #000000;
+}
+
+#translation-box ul#lang-dropdown::-webkit-scrollbar-thumb{
+	background-color: #999;
+	
+}
+
+ul#lang-dropdown li:hover{
+	background-color:#999;
+}
+
+
+ul#lang-dropdown li{
+    width: 40px;
+    padding: 2px;
+    padding-left: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 10px;
+}
+
+
+@media screen and (max-height: 600px) {
+  #user-gravatar{
+  	display:none;
+  }
+}
+
+
+   </style>
+		<style>
+			@font-face {
+				font-family: 'HelveNueThinNormal';
+				src: url('https://storage.googleapis.com/xprs_resources/fonts/helveticaneuethn-webfont.eot');
+				src: url('https://storage.googleapis.com/xprs_resources/fonts/helveticaneuethn-webfont.eot?iefix') format('eot'),
+					url('https://storage.googleapis.com/xprs_resources/fonts/helveticaneuethn-webfont.woff') format('woff'),
+					url('https://storage.googleapis.com/xprs_resources/fonts/helveticaneuethn-webfont.ttf') format('truetype'),
+					url('https://storage.googleapis.com/xprs_resources/fonts/helveticaneuethn-webfont.svg#webfontJR0GaG5Z')
+					format('svg');
+				font-weight: normal;
+				font-style: normal;
+			}
+		</style>
+		<link rel="stylesheet" href="//www.im-creator.com/js/lib/sweetalert/sweetalert.css" />
+		
+		<link rel="stylesheet" type="text/css" href="//www.im-creator.com/css/start.css?v=1.5.8d">
+		<link rel="stylesheet" type="text/css" href="//www.im-creator.com/css/usermodule.css?v=1.5.8d">
+		
+<style id="label-style" type="text/css">
+	
+	.bg-div{
+		background-image:url(https://lh3.googleusercontent.com/ZgLp2jeL7ynJJZ-aMv-LgcFLv1-wuV0E4mMxsQXqyPe9CDHiClIlQODrGLalwzQp4XNWjMBy8Z68369P4Q=s1200)!important;
+	}
+	
+	
+	.editor-logo{
+		background-image:url(https://lh3.googleusercontent.com/PVw5qfegr3TcOhyx6UH2QShnmtTexxEIuzECuxiKnbfkzYPv28lrzSMSnelUe7nkoYjs-KLxOYzo1wgOSZk)!important;
+	}
+	
+	
+	.loading-logo{
+		content:url(https://lh3.googleusercontent.com/BVPCuhW88_eSWMXpfFE8ZZh9IxRktAzfOp_rZ9vvhH2zLhLNoCJ6TjOleEnqppMxvYHdvsxDX-uXWfRrgQ)!important;
+	}
+	
+	
+	
+
+
+	
+	.btn:hover,
+	ul li.control-panel-option:hover.mark-hover,
+    #control-panel ul.option-inner-menu li:hover,
+	.website-style-btn:hover,
+	.website-style-btn:hover,
+	.master.item-box:hover .common-options img:first-child{
+		background-color:#0099CC!important;
+	}
+	
+	
+</style>
+
+
+
+
+
+
+
+
+		
+		<!-- SCRIPT -->
+		<script src="https://code.jquery.com/jquery-2.x-git.min.js" type="text/javascript"></script>
+		
+		<script src="//www.im-creator.com/js/xprs_helper.js?v=1.5.8d" type="text/javascript"></script>
+		
+		<script src="//www.im-creator.com/js/lib/jquery.cookie.min.js" type="text/javascript"></script>
+		<script src="//www.im-creator.com/js/lib/sweetalert/sweetalert.min.js" type="text/javascript"></script>
+		<script src="//www.im-creator.com/translation_js?lang=en" type="text/javascript"></script>
+		
+
+
+<!-- ANALYTICS -->
+<script type="text/javascript">
+
+var currentDomain =  window.location.host;
+var ANALYTICS_CODES = [];
+var labelAnalytics = "UA-64970204-1";
+// var noLabel = (labelAnalytics == "UA-64970204-1");
+// ANALYTICS_CODES.push({"name":"xprs","code":"UA-52235213-1"});
+ANALYTICS_CODES.push({"name":"label_analytics","code":labelAnalytics});
+
+
+//  if (currentDomain != "localhost:7000"){
+	// (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	// 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	// 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	// 	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	// for (i in ANALYTICS_CODES){
+	// 	var analyticsName = ANALYTICS_CODES[i]["name"];
+	// 	ga('create', ANALYTICS_CODES[i]["code"], 'auto',{'name': analyticsName});
+	// 	ga(analyticsName + '.send', 'pageview');
+	// 	ga('set', 'anonymizeIp', true);
+	// }
+//  }
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', labelAnalytics, 'auto');
+ga('send', 'pageview');
+ga('require', 'ecommerce');
+</script>
+
+
+<script src="//www.im-creator.com/js/start.js?v=1.5.8d"  type="text/javascript"></script>
+<script src='https://imos006-dot-im--os.appspot.com/js/imos.js?v=1.5.8d' type='text/javascript' ></script>
+<script defer src="https://app.im-os.com/chatclient.js?propertyId=b627768a-e6c0-4c01-8dd7-5ae560dfc201"></script>
+
+</head>
+
+	<body onload="SpimeStart.start();" style="background-color:black" data-server="//www.im-creator.com" > 
+		
+		<div class="bg-div slow-animated-opacity"></div>
+		<div class="top-grad"></div>
+		<div class="bottom-grad"></div>
+		<div id="top-wrapper">
+		    <div id="start-menu-outer-wrapper">
+		    	<div id="start-menu-inner-wrapper">
+			    	<div id="start-menu-btns" class="zero-opacity slow-animated-opacity">
+			    		<div class="intro-text"><span class="t-t">Welcome to </span>  <span class="t-t"> website building </span></div>
+			    		
+			    		<div id="themes" class="btn-wrapper "><div  class="btn" style="background-image:url(//www.im-creator.com/images/ui_icons/add_site.png);" data-template-id="vbid-4f478e1620734b6fb137927fd03f760b"></div><div class="btn-text t-t">Create a new website</div></div>
+			    		
+		      			<div id="my_sites"  class="btn-wrapper "><div class="btn start-blank " data-template-id="DEFAULT_TEMPLATE" style="background-image:url(//www.im-creator.com/images/ui_icons/my_account.png);"></div><div class="btn-text t-t">My account</div></div>
+		      			
+		      		</div>
+		      	</div>
+	      	</div>
+      	</div>
+      	<div id="bread-crumbs" >
+	
+		<a href="./" ><img class="back-btn clickable" src="//www.im-creator.com/images/ui_icons/back_ico.png" /></a>
+	
+
+	
+	<div class="bread-crumbs-path">
+	<a href="/"><span class="im-text"><img class="label-logo" src="https://lh3.googleusercontent.com/PVw5qfegr3TcOhyx6UH2QShnmtTexxEIuzECuxiKnbfkzYPv28lrzSMSnelUe7nkoYjs-KLxOYzo1wgOSZk" height="25x" /></span></a>
+	
+	<a href="/" ><span class="bread-crumbs-label-name"></span> 1.5.8d</a>
+	
+	</div>
+</div>
+      	
+<div id="user-module">
+	
+	
+	<a href="//www.im-creator.com/dashboard">
+		<div class="whitelable-management clickable" >
+		
+			<span class='t-t'>Become a reseller</span>
+		
+		</div>
+	</a>
+	
+	
+	<div id="translation-box" class="part-of-dropdown">
+		<div class="part-of-dropdown"><span id="selected-lang" class="clickable" >EN</span><img class="caret" src="/images/ui_icons/caret-down.png" class="clickable part-of-dropdown" /></div>
+		<ul id="lang-dropdown"></ul>
+	</div>
+	<img class="user-avatar" src="https://www.gravatar.com/avatar/?d=mm" />
+	<div class="user-details" >
+		
+		
+			<div class="user-label t-t" >Guest</div>
+			
+			<div id="sign-in" class="clickable action-label t-t" onclick="XPRSHelper.invokeLogin(function(){XPRSHelper.getParentWindow().location.href = './my_sites'},'force-register')">join/sign in</div>
+			
+		
+	</div>
+</div>
+ 
+	</body>
+
+	
+	<div id="user-pref" style="display:none;" data-lang="en"></div>
+	<div style="display:none;" id="lightbox-menus-holder">
+		
+<div  class="login-dialog-wrapper white_content delay-anim" style="text-align:center;">
+
+	<div class="login dialog-holder">
+		<div  class="login-title"><span class="im-text form-type  t-t">Login</span></div>
+		<form id="login-form">
+			<img id="user-gravatar" src="https://www.gravatar.com/avatar/?d=mm" /><br/>
+			<input name="name" type="text" placeholder="nickname/email" data-placeholder="nickname/email" class="t-t" /><br/>
+			<input name="password" type="password" placeholder="password" data-placeholder="password" class="t-t" autocomplete="off" /><br/>
+			<input id="login-btn" class="clickable t-t" type="button" value="Login">
+			 
+			<div id="goto-register" class="clickable t-t">Create a new account</div>
+			
+			<div id="forgot-password" class="clickable t-t">Forgot Password?</div>
+		</form>
+	</div>
+	
+	<div class="register dialog-holder" style="display:none;">
+		<div  class="login-title"><span class="im-text form-type  t-t">Login</span></div>
+		<form id="register-form" class="hide-phone">
+			<img id="user-gravatar" src="https://www.gravatar.com/avatar/?d=mm" /><br/>
+			<input name="email" type="text" placeholder="email" data-placeholder="email" class="t-t"  /><br/>
+			
+			<input name="name" type="text" placeholder="nickname" data-placeholder="nickname" class="t-t" /><br/>
+			<input name="password" type="password"  placeholder="password" data-placeholder="password" class="t-t" autocomplete="off" /><br/>
+			
+			<input id="terms" type="checkbox" checked="checked" disabled /><span class="form-label" style="line-height: normal;display: inline-block;vertical-align: middle; margin: 10px;"><a href="http://www.imcreator.com/tos" target="_blank" style="padding:0px;" class="terms-link  t-t">I have read the Terms of Use <br>and the Privacy Policy and accept them</a></span><br/>
+			<input id="register-btn" class="clickable t-t" type="button" value="Join">
+			<div id="goto-login" class="clickable t-t">Already a member?</div>
+		</form>
+	</div>
+	
+	<div class="forgot-pass dialog-holder" style="display:none;">
+		<div  class="login-title"><span class="im-text form-type t-t">Login</span></div>
+		<form id="forgot-pass-form">
+			<img id="user-gravatar" src="https://www.gravatar.com/avatar/?d=mm" /><br/>
+			<input name="email" type="text" placeholder="email" data-placeholder="email" /><br/>
+			<input id="forgot-pass-btn" class="clickable t-t" type="button" class="input-btn" value="SEND">
+			<div id="goto-login" class="clickable t-t">Back</div>
+		</form>
+	</div>
+</div>
+	</div>
+	<div id="fade" class="black_overlay fadein-noscript" style="display:none;"></div>
+	
+</html>
